@@ -1,16 +1,24 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
-#include <string>
 #include <vector>
+#include <stdexcept>
+using namespace std;
 
-bool loadMatrices(const std::string &filename, int &n, std::vector<std::vector<int>> &matrix1, std::vector<std::vector<int>> &matrix2);
-void printMatrix(const std::vector<std::vector<int>> &matrix);
-std::vector<std::vector<int>> addMatrices(const std::vector<std::vector<int>> &m1, const std::vector<std::vector<int>> &m2);
-std::vector<std::vector<int>> multiplyMatrices(const std::vector<std::vector<int>> &m1, const std::vector<std::vector<int>> &m2);
-int sumDiagonals(const std::vector<std::vector<int>> &matrix);
-void swapMatrixRows(std::vector<std::vector<int>> &matrix, int row1, int row2);
-void swapMatrixColumns(std::vector<std::vector<int>> &matrix, int col1, int col2);
-void updateMatrixElement(std::vector<std::vector<int>> &matrix, int row, int col, int newValue);
+class Matrix {
+public:
+    Matrix(const vector<vector<int>> &input);
+    int get_size() const;
+    int get_value(int row, int col) const;
+    void set_value(int row, int col, int value);
+    Matrix operator+(const Matrix &other) const;
+    Matrix operator*(const Matrix &other) const;
+    int sum_diagonal_major() const;
+    int sum_diagonal_minor() const;
+    void swap_rows(int row1, int row2);
+    void swap_cols(int col1, int col2);
+private:
+    vector<vector<int>> data;
+};
 
 #endif
