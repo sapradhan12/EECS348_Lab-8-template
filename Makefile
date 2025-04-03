@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 TARGET = main
-SRCS = main.cpp
+SRCS = main.cpp matrix.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(TARGET)
